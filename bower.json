@@ -8,9 +8,12 @@
     "url": "git@github.com:the-darc/br-masks.git"
   },
   "main": "releases/br-masks.js",
-  "author": [{
-    "name": "Daniel Campos", "email": "darc.tec@gmail.com"
-  }],
+  "author": [
+    {
+      "name": "Daniel Campos",
+      "email": "darc.tec@gmail.com"
+    }
+  ],
   "keywords": [
     "mask",
     "cpf",
@@ -27,5 +30,8 @@
     "src",
     "**/*.test.js",
     "package.json"
-  ]
+  ],
+  "dependencies": {
+    "string-mask": "~0.0.1"
+  }
 }
