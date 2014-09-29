@@ -1,0 +1,31 @@
+{
+  "name": "br-masks",
+  "version": "0.1.0",
+  "description": "A library of masks applicable to several Brazilian data like I.E., CNPJ, CPF and others",
+  "homepage": "http://github.com/the-darc/br-masks",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:the-darc/br-masks.git"
+  },
+  "main": "releases/br-masks.js",
+  "author": [{
+    "name": "Daniel Campos", "email": "darc.tec@gmail.com"
+  }],
+  "keywords": [
+    "mask",
+    "cpf",
+    "cnpj",
+    "inscrição estadual",
+    "cep",
+    "telefone"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "src",
+    "**/*.test.js",
+    "package.json"
+  ]
+}
