@@ -47,7 +47,10 @@ gulp.task('build', function(done) {
 		'}',
 		'}.call(this));'].join('\n');
 
-	gulp.src(path.src.files)
+	gulp.src([
+		'bower_components/string-mask/src/string-mask.js',
+		path.src.files
+	])
 		.pipe(plugins.concat('br-masks.js'))
 		.pipe(plugins.header(header, {pkg: pkg}))
 		.pipe(plugins.footer(footer))
