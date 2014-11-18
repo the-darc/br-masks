@@ -1,3 +1,7 @@
+[![npm version](https://badge.fury.io/js/br-masks.svg)](http://badge.fury.io/js/br-masks)
+[![Build Status](https://travis-ci.org/the-darc/br-masks.svg?branch=master)](https://travis-ci.org/the-darc/br-masks)
+
+
 # br-masks #
 
 A library of masks applicable to several Brazilian data like I.E., CNPJ, CPF and others
