@@ -32,6 +32,6 @@
     "package.json"
   ],
   "dependencies": {
-    "string-mask": "~0.0.1"
+    "string-mask": "^0.1.1"
   }
 }
