@@ -2,6 +2,7 @@ if (typeof require === 'function') {
 	var StringMask = require('string-mask');
 }
 
+/*exported IE */
 var IE = function(value, uf) {
 	var ieMasks = {
 		'AC': [{mask: new StringMask('00.000.000/000-00')}],

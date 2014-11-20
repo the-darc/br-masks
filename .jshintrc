@@ -111,8 +111,7 @@
         "angular": true,
         "before": true,
         "describe": true,
-        "it": true,
-        "CNPJ": true
+        "it": true
     },
     "predef"        : [         // Extra globals.
     ],

@@ -2,6 +2,7 @@ if (typeof require === 'function') {
 	var StringMask = require('string-mask');
 }
 
+/*exported CEP */
 var CEP = function(value) {
 	var cepMask = new StringMask('00000-000');
 	if(!value) {
