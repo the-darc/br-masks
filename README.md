@@ -78,3 +78,18 @@ See: [Conferência de Inscrições Estaduais](http://www.sintegra.gov.br/insc_es
 	var masked9 = BrM.phone(phone9);
 	// masked9 should be '(38) 21220-1255'
 ```
+
+### FINANCE ###
+
+```javascript
+	var BrM = require('br-masks');
+	var value = 125.1578;
+	var masked = BrM.finance(value);
+	// masked should be '125.16'
+
+	var value2 = -125.1578;
+	var masked2 = BrM.finance(value2);
+	// masked2 should be '(125.16)'
+```
+See [finance.test.js](https://github.com/the-darc/br-masks/blob/master/test/finance.test.js) for more examples.
+
