@@ -1,6 +1,6 @@
 {
   "name": "br-masks",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "description": "A library of masks applicable to several Brazilian data like I.E., CNPJ, CPF and others",
   "homepage": "http://github.com/the-darc/br-masks",
   "repository": {
@@ -32,6 +32,6 @@
     "package.json"
   ],
   "dependencies": {
-    "string-mask": "~0.0.1"
+    "string-mask": "^0.1.1"
   }
 }

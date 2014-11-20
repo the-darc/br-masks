@@ -2,6 +2,7 @@ if (typeof require === 'function') {
 	var StringMask = require('string-mask');
 }
 
+/*exported CPF */
 var CPF = function(value) {
 	var cpfPattern = new StringMask('000.000.000-00');
 	if(!value) {
