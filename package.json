@@ -29,7 +29,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "string-mask": "^0.0.1"
+    "string-mask": "^0.1.1"
   },
   "devDependencies": {
     "gulp": "^3.7.0",
