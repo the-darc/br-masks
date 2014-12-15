@@ -1,4 +1,5 @@
 [![npm version](https://badge.fury.io/js/br-masks.svg)](http://badge.fury.io/js/br-masks)
+[![Bower version](https://badge.fury.io/bo/br-masks.svg)](http://badge.fury.io/bo/br-masks)
 [![Build Status](https://travis-ci.org/the-darc/br-masks.svg?branch=master)](https://travis-ci.org/the-darc/br-masks)
 
 
