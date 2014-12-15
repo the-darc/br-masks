@@ -94,3 +94,11 @@ See: [Conferência de Inscrições Estaduais](http://www.sintegra.gov.br/insc_es
 ```
 See [finance.test.js](https://github.com/the-darc/br-masks/blob/master/test/finance.test.js) for more examples.
 
+### NFE ACCESS KEY ###
+
+```javascript
+	var BrM = require('br-masks');
+	var value = '35130161365284015136550140061338751137432219';
+	var masked = BrM.nfeAccessKey(value);
+	// masked should be '3513 0161 3652 8401 5136 5501 4006 1338 7511 3743 2219'
+```
