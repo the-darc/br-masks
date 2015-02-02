@@ -111,7 +111,8 @@
         "angular": true,
         "before": true,
         "describe": true,
-        "it": true
+        "it": true,
+        "StringMask": true
     },
     "predef"        : [         // Extra globals.
     ],
