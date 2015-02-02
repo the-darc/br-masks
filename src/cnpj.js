@@ -1,4 +1,4 @@
-if (typeof require === 'function') {
+if (!StringMask && typeof require === 'function') {
 	var StringMask = require('string-mask');
 }
 
