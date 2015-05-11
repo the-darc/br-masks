@@ -1,7 +1,3 @@
-if (!StringMask && typeof require === 'function') {
-	var StringMask = require('string-mask');
-}
-
 /*exported IE */
 var IE = function(value, uf) {
 	var ieMasks = {

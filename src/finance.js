@@ -1,7 +1,3 @@
-if (!StringMask && typeof require === 'function') {
-	var StringMask = require('string-mask');
-}
-
 /*exported FINANCE */
 var FINANCE = function(value, precision, decimalSep, groupSep) {
 	precision = (!precision && precision !== 0) || precision < 0? 2 : precision;
