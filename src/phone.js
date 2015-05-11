@@ -1,7 +1,3 @@
-if (!StringMask && typeof require === 'function') {
-	var StringMask = require('string-mask');
-}
-
 /*exported PHONE */
 var PHONE = function(value) {
 	var phoneMask8D = new StringMask('(00) 0000-0000'),
