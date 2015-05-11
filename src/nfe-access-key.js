@@ -1,7 +1,3 @@
-if (!StringMask && typeof require === 'function') {
-	var StringMask = require('string-mask');
-}
-
 /*exported NFEACCESSKEY */
 var NFEACCESSKEY = function(value) {
 	if(!value) {
