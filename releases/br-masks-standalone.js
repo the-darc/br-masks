@@ -186,7 +186,7 @@ if (objectTypes[typeof module]) {
 /**
  * br-masks
  * A library of masks applicable to several Brazilian data like I.E., CNPJ, CPF and others
- * @version v0.3.1
+ * @version v0.3.2
  * @link http://github.com/the-darc/br-masks
  * @license MIT
  */
