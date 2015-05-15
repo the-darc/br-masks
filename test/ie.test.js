@@ -35,6 +35,10 @@ describe('I.E. ', function() {
 				should(BrM.ie('18100100000059', uf)).be.eql('18.1.001.0000005-9');
 				done();
 			});
+			it('should not mask numbers values', function(done) {
+				should(BrM.ie(032141840, uf)).be.eql(32141840);
+				done();
+			});
 		});
 		describe('- RS', function() {
 			var uf = 'RS';

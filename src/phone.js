@@ -8,6 +8,7 @@ var PHONE = function(value) {
 	}
 
 	var formatedValue;
+	value = value + '';
 	if(value.length < 11){
 		formatedValue = phoneMask8D.apply(value);
 	}else{
