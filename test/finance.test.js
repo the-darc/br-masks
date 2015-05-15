@@ -1,5 +1,5 @@
 var should = require('should'),
-	BrM = require('../releases/br-masks.min');
+	BrM = require('../releases/br-masks');
 
 describe('FINANCE', function(){
 	it('should maks 125 to 125.00', function(done) {

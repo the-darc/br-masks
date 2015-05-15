@@ -1,7 +1,16 @@
 var should = require('should'),
-	BrM = require('../releases/br-masks.min');
+	BrM = require('../releases/br-masks');
 
 describe('NFE ACCESS KEY', function(){
+	it('should not mask empty values', function(done) {
+		should(BrM.nfeAccessKey(null)).be.eql(null);
+		should(BrM.nfeAccessKey(undefined)).be.eql(undefined);
+		should(BrM.nfeAccessKey('')).be.eql('');
+		should(BrM.nfeAccessKey(0)).be.eql(0);
+		should(BrM.nfeAccessKey(false)).be.eql(false);
+		done();
+	});
+
 	var nfes = [{
 		key: '35140111724258000157550010006882191630386000',
 		expected: '3514 0111 7242 5800 0157 5500 1000 6882 1916 3038 6000'

@@ -1,7 +1,15 @@
 var should = require('should'),
-	BrM = require('../releases/br-masks.min');
+	BrM = require('../releases/br-masks');
 
 describe('PHONE', function(){
+	it('should not mask empty values', function(done) {
+		should(BrM.phone(null)).be.eql(null);
+		should(BrM.phone(undefined)).be.eql(undefined);
+		should(BrM.phone('')).be.eql('');
+		should(BrM.phone(0)).be.eql(0);
+		should(BrM.phone(false)).be.eql(false);
+		done();
+	});
 	it('should maks 3133340167 to (31) 3334-0167', function(done) {
 		should(BrM.phone('3133340167')).be.eql('(31) 3334-0167');
 		done();

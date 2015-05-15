@@ -9,7 +9,8 @@ var gulp = require('gulp'),
 
 var config = {
 	src: {
-		files: 'src/**/*.js'
+		files: 'src/**/*.js',
+		release: 'releases/br-masks.js'
 	},
 	test: {
 		files: 'test/**/*.test.js'
@@ -118,7 +119,7 @@ gulp.task('test-watch', ['jshint', 'build', 'runtest'], function() {
 });
 
 gulp.task('test-coverage', function(done) {
-	gulp.src(config.src.files)
+	gulp.src(config.src.release)
 	.pipe(plugins.istanbul())
 	.pipe(plugins.istanbul.hookRequire())
 	.on('finish', function() {

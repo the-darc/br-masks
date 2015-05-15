@@ -1,7 +1,16 @@
 var should = require('should'),
-	BrM = require('../releases/br-masks.min');
+	BrM = require('../releases/br-masks');
 
 describe('CNPJ', function(){
+	it('should not mask empty values', function(done) {
+		should(BrM.cnpj(null)).be.eql(null);
+		should(BrM.cnpj(undefined)).be.eql(undefined);
+		should(BrM.cnpj('')).be.eql('');
+		should(BrM.cnpj(0)).be.eql(0);
+		should(BrM.cnpj(false)).be.eql(false);
+		done();
+	});
+
 	it('should maks 10157471000161 to 10.157.471/0001-61', function(done) {
 		should(BrM.cnpj('10157471000161')).be.eql('10.157.471/0001-61');
 		done();

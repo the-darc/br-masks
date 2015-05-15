@@ -1,7 +1,16 @@
 var should = require('should'),
-	BrM = require('../releases/br-masks.min');
+	BrM = require('../releases/br-masks');
 
 describe('CPF ', function() {
+	it('should not mask empty values', function(done) {
+		should(BrM.cpf(null)).be.eql(null);
+		should(BrM.cpf(undefined)).be.eql(undefined);
+		should(BrM.cpf('')).be.eql('');
+		should(BrM.cpf(0)).be.eql(0);
+		should(BrM.cpf(false)).be.eql(false);
+		done();
+	});
+
 	it('should mask 97070868669 to 970.708.686-69', function(done) {
 		should(BrM.cpf('97070868669')).be.eql('970.708.686-69');
 		done();
