@@ -194,7 +194,7 @@
 /**
  * br-masks
  * A library of masks applicable to several Brazilian data like I.E., CNPJ, CPF and others
- * @version v0.3.3
+ * @version v0.3.4
  * @link http://github.com/the-darc/br-masks
  * @license MIT
  */
