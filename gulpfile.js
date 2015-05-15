@@ -4,9 +4,10 @@ var gulp = require('gulp'),
 	plugins = require('gulp-load-plugins')({
 		config: path.join(__dirname, 'package.json')
 	}),
-	pkg = require('./package.json');
+	pkg = require('./package.json'),
+	fs = require('fs');
 
-var path = {
+var config = {
 	src: {
 		files: 'src/**/*.js'
 	},
@@ -56,7 +57,7 @@ var footer = ['',
 
 gulp.task('build:lib', function() {
 	return gulp.src([
-		path.src.files
+		config.src.files
 	])
 		.pipe(plugins.concat('br-masks.js'))
 		.pipe(plugins.header(header, {pkg: pkg}))
@@ -82,18 +83,10 @@ gulp.task('build:standalone', ['build:lib'], function() {
 gulp.task('build', ['build:standalone']);
 
 gulp.task('jshint', function(done) {
-	gulp.src(path.src.files)
+	gulp.src(config.src.files)
 	.pipe(plugins.jshint('.jshintrc'))
 	.pipe(plugins.jshint.reporter(jshintReporter));
 	done();
-});
-
-gulp.task('runtestdot', ['jshint', 'build'], function() {
-	gulp.src(path.test.files, {read: false})
-	.pipe(plugins.mocha({
-		reporter: 'dot'
-	}))
-	.on('error', console.warn.bind(console));
 });
 
 function mochaRunnerFactory(reporter) {
@@ -102,28 +95,34 @@ function mochaRunnerFactory(reporter) {
 	});
 }
 
+gulp.task('runtestdot', ['jshint', 'build'], function() {
+	gulp.src(config.test.files, {read: false})
+	.pipe(mochaRunnerFactory('dot'))
+	.on('error', console.warn.bind(console));
+});
+
 gulp.task('runtest', ['jshint', 'build'], function() {
-	gulp.src(path.test.files, {read: false})
+	gulp.src(config.test.files, {read: false})
 	.pipe(mochaRunnerFactory())
 	.on('error', console.warn.bind(console));
 });
 
 gulp.task('default', ['jshint', 'build', 'runtestdot'], function() {
-	gulp.watch(path.src.files, ['jshint', 'build', 'runtestdot']);
+	gulp.watch(config.src.files, ['jshint', 'build', 'runtestdot']);
 });
 
 gulp.task('test', ['jshint', 'build', 'runtest']);
 
 gulp.task('test-watch', ['jshint', 'build', 'runtest'], function() {
-	gulp.watch(path.src.files, ['jshint', 'build', 'runtest']);
+	gulp.watch(config.src.files, ['jshint', 'build', 'runtest']);
 });
 
 gulp.task('test-coverage', function(done) {
-	gulp.src(path.src.files)
+	gulp.src(config.src.files)
 	.pipe(plugins.istanbul())
 	.pipe(plugins.istanbul.hookRequire())
 	.on('finish', function() {
-		gulp.src(path.test.files, {
+		gulp.src(config.test.files, {
 			cwd: process.env.PWD,
 			read: false
 		})

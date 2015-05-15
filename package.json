@@ -1,6 +1,6 @@
 {
   "name": "br-masks",
-  "version": "0.3.4",
+  "version": "0.4.0",
   "description": "A library of masks applicable to several Brazilian data like I.E., CNPJ, CPF and others",
   "id": "/br-masks",
   "main": "releases/br-masks.js",
@@ -13,7 +13,7 @@
     "url": "https://github.com/the-darc/br-masks/issues"
   },
   "scripts": {
-    "test": "gulp test",
+    "test": "gulp test-coverage",
     "postinstall": "bower install && gulp build",
     "postupdate": "bower update"
   },
