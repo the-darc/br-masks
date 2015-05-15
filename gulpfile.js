@@ -49,7 +49,8 @@ var footer = ['',
 	'		phone: PHONE,',
 	'		cep: CEP,',
 	'		finance: FINANCE,',
-	'		nfeAccessKey: NFEACCESSKEY',
+	'		nfeAccessKey: NFEACCESSKEY,',
+	'		cpfCnpj: CPFCNPJ',
 	'	};',
 	'}));'].join('\n');
 

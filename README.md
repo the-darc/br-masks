@@ -45,7 +45,7 @@ See: [Conferência de Inscrições Estaduais](http://www.sintegra.gov.br/insc_es
 ```javascript
 	var BrM = require('br-masks');
 	var cpf = '97070868669';
-	var isValid = BrM.cpf(cpf); 
+	var masked = BrM.cpf(cpf); 
 	// masked should be '970.708.686-69'
 ```
 
@@ -54,8 +54,18 @@ See: [Conferência de Inscrições Estaduais](http://www.sintegra.gov.br/insc_es
 ```javascript
 	var BrM = require('br-masks');
 	var cnpj = '79121383000106';
-	var isValid = BrM.cnpj(cnpj);
+	var masked = BrM.cnpj(cnpj);
 	// masked should be '79.121.383/0001-06'
+```
+
+### CPF/CNPJ ###
+
+```javascript
+	var BrM = require('br-masks');
+	var maskedCpf = BrM.cpfCnpj('97070868669');
+	// maskedCpf should be '970.708.686-69'
+	var maskedCnpj = BrM.cpfCnpj('79121383000106');
+	// maskedCnpj should be '79.121.383/0001-06'
 ```
 
 ### CEP ###

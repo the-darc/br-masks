@@ -42,6 +42,18 @@ var CNPJ = function(value) {
 	return formatedValue;
 };
 
+/*exported CPFCNPJ */
+/*globals CPF, CNPJ*/
+var CPFCNPJ = function(value) {
+	if (!value || !value.length) {
+		return value;
+	} else if (value.length <= 11) {
+		return CPF(value);
+	} else {
+		return CNPJ(value);
+	}
+};
+
 /*exported CPF */
 var CPF = function(value) {
 	var cpfPattern = new StringMask('000.000.000-00');
@@ -190,6 +202,7 @@ var PHONE = function(value) {
 		phone: PHONE,
 		cep: CEP,
 		finance: FINANCE,
-		nfeAccessKey: NFEACCESSKEY
+		nfeAccessKey: NFEACCESSKEY,
+		cpfCnpj: CPFCNPJ
 	};
 }));
