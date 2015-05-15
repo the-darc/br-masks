@@ -1,9 +1,8 @@
+# br-masks #
 [![npm version](https://badge.fury.io/js/br-masks.svg)](http://badge.fury.io/js/br-masks)
 [![Bower version](https://badge.fury.io/bo/br-masks.svg)](http://badge.fury.io/bo/br-masks)
 [![Build Status](https://travis-ci.org/the-darc/br-masks.svg?branch=master)](https://travis-ci.org/the-darc/br-masks)
-
-
-# br-masks #
+[![Coverage Status](https://coveralls.io/repos/the-darc/br-masks/badge.svg?branch=master)](https://coveralls.io/r/the-darc/br-masks?branch=develop)
 
 A library of masks applicable to several Brazilian data like I.E., CNPJ, CPF and others
 
@@ -45,7 +44,7 @@ See: [Conferência de Inscrições Estaduais](http://www.sintegra.gov.br/insc_es
 ```javascript
 	var BrM = require('br-masks');
 	var cpf = '97070868669';
-	var isValid = BrM.cpf(cpf); 
+	var masked = BrM.cpf(cpf); 
 	// masked should be '970.708.686-69'
 ```
 
@@ -54,8 +53,18 @@ See: [Conferência de Inscrições Estaduais](http://www.sintegra.gov.br/insc_es
 ```javascript
 	var BrM = require('br-masks');
 	var cnpj = '79121383000106';
-	var isValid = BrM.cnpj(cnpj);
+	var masked = BrM.cnpj(cnpj);
 	// masked should be '79.121.383/0001-06'
+```
+
+### CPF/CNPJ ###
+
+```javascript
+	var BrM = require('br-masks');
+	var maskedCpf = BrM.cpfCnpj('97070868669');
+	// maskedCpf should be '970.708.686-69'
+	var maskedCnpj = BrM.cpfCnpj('79121383000106');
+	// maskedCnpj should be '79.121.383/0001-06'
 ```
 
 ### CEP ###

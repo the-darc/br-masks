@@ -4,11 +4,13 @@ var gulp = require('gulp'),
 	plugins = require('gulp-load-plugins')({
 		config: path.join(__dirname, 'package.json')
 	}),
-	pkg = require('./package.json');
+	pkg = require('./package.json'),
+	fs = require('fs');
 
-var path = {
+var config = {
 	src: {
-		files: 'src/**/*.js'
+		files: 'src/**/*.js',
+		release: 'releases/br-masks.js'
 	},
 	test: {
 		files: 'test/**/*.test.js'
@@ -49,13 +51,14 @@ var footer = ['',
 	'		phone: PHONE,',
 	'		cep: CEP,',
 	'		finance: FINANCE,',
-	'		nfeAccessKey: NFEACCESSKEY',
+	'		nfeAccessKey: NFEACCESSKEY,',
+	'		cpfCnpj: CPFCNPJ',
 	'	};',
 	'}));'].join('\n');
 
 gulp.task('build:lib', function() {
 	return gulp.src([
-		path.src.files
+		config.src.files
 	])
 		.pipe(plugins.concat('br-masks.js'))
 		.pipe(plugins.header(header, {pkg: pkg}))
@@ -81,34 +84,78 @@ gulp.task('build:standalone', ['build:lib'], function() {
 gulp.task('build', ['build:standalone']);
 
 gulp.task('jshint', function(done) {
-	gulp.src(path.src.files)
+	gulp.src(config.src.files)
 	.pipe(plugins.jshint('.jshintrc'))
 	.pipe(plugins.jshint.reporter(jshintReporter));
 	done();
 });
 
+function mochaRunnerFactory(reporter) {
+	return plugins.mocha({
+		reporter: reporter || 'spec'
+	});
+}
+
 gulp.task('runtestdot', ['jshint', 'build'], function() {
-	gulp.src(path.test.files, {read: false})
-	.pipe(plugins.mocha({
-		reporter: 'dot'
-	}))
+	gulp.src(config.test.files, {read: false})
+	.pipe(mochaRunnerFactory('dot'))
 	.on('error', console.warn.bind(console));
 });
 
 gulp.task('runtest', ['jshint', 'build'], function() {
-	gulp.src(path.test.files, {read: false})
-	.pipe(plugins.mocha({
-		reporter: 'spec'
-	}))
+	gulp.src(config.test.files, {read: false})
+	.pipe(mochaRunnerFactory())
 	.on('error', console.warn.bind(console));
 });
 
 gulp.task('default', ['jshint', 'build', 'runtestdot'], function() {
-	gulp.watch(path.src.files, ['jshint', 'build', 'runtestdot']);
+	gulp.watch(config.src.files, ['jshint', 'build', 'runtestdot']);
 });
 
 gulp.task('test', ['jshint', 'build', 'runtest']);
 
 gulp.task('test-watch', ['jshint', 'build', 'runtest'], function() {
-	gulp.watch(path.src.files, ['jshint', 'build', 'runtest']);
+	gulp.watch(config.src.files, ['jshint', 'build', 'runtest']);
 });
+
+gulp.task('test-coverage', function(done) {
+	gulp.src(config.src.release)
+	.pipe(plugins.istanbul())
+	.pipe(plugins.istanbul.hookRequire())
+	.on('finish', function() {
+		gulp.src(config.test.files, {
+			cwd: process.env.PWD,
+			read: false
+		})
+		.pipe(mochaRunnerFactory('spec'))
+		.pipe(plugins.istanbul.writeReports())
+		.on('end', function() {
+			if (process.env.TRAVIS) {
+				gulp.src('./coverage/**/lcov.info')
+				.pipe(plugins.coveralls())
+				.on('end', done);
+			} else {
+				done();
+			}
+		});
+	});
+});
+
+gulp.task('changelog', function(done) {
+	var changelog = require('conventional-changelog');
+
+	var options = {
+		repository: pkg.homepage,
+		version: pkg.version,
+		file: path.join(__dirname, 'CHANGELOG.md')
+	};
+
+	changelog(options, function(err, log) {
+		if (err) {
+			throw err;
+		}
+
+		fs.writeFile(options.file, log, done);
+	});
+});
+

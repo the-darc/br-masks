@@ -1,7 +1,7 @@
 /**
  * br-masks
  * A library of masks applicable to several Brazilian data like I.E., CNPJ, CPF and others
- * @version v0.3.4
+ * @version v0.4.0
  * @link http://github.com/the-darc/br-masks
  * @license MIT
  */
@@ -40,6 +40,18 @@ var CNPJ = function(value) {
 	var cnpjPattern = new StringMask('00.000.000\/0000-00');
 	var formatedValue = cnpjPattern.apply(value);
 	return formatedValue;
+};
+
+/*exported CPFCNPJ */
+/*globals CPF, CNPJ*/
+var CPFCNPJ = function(value) {
+	if (!value || !value.length) {
+		return value;
+	} else if (value.length <= 11) {
+		return CPF(value);
+	} else {
+		return CNPJ(value);
+	}
 };
 
 /*exported CPF */
@@ -117,10 +129,6 @@ var IE = function(value, uf) {
 	};
 
 	function clearValue (value) {
-		if(!value) {
-			return value;
-		}
-
 		return value.replace(/[^0-9]/g, '');
 	}
 
@@ -190,6 +198,7 @@ var PHONE = function(value) {
 		phone: PHONE,
 		cep: CEP,
 		finance: FINANCE,
-		nfeAccessKey: NFEACCESSKEY
+		nfeAccessKey: NFEACCESSKEY,
+		cpfCnpj: CPFCNPJ
 	};
 }));

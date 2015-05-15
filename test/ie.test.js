@@ -2,21 +2,22 @@ var should = require('should'),
 	BrM = require('../releases/br-masks');
 
 describe('I.E. ', function() {
-	describe('I.E.: Group02', function() {
-/*		describe('- Invalid UF', function() {
-			it('should ivalidate for unknown UF', function(done) {
-				should(BrM.ie('XX').validate('0321418-40');
-				done();
-			});
-			it('should ivalidate for undefined uf', function(done) {
-				should(BrM.ie(undefined).validate('0321418-40');
-				done();
-			});
-			it('should ivalidate for NULL uf', function(done) {
-				should(BrM.ie(null).validate('0321418-40');
-				done();
-			});
-		});*/
+	it('should not mask empty values', function(done) {
+		should(BrM.ie(null)).be.eql(null);
+		should(BrM.ie(undefined)).be.eql(undefined);
+		should(BrM.ie('')).be.eql('');
+		should(BrM.ie(0)).be.eql(0);
+		should(BrM.ie(false)).be.eql(false);
+		done();
+	});
+
+	it('should not mask invalid UFs', function(done) {
+		should(BrM.ie('032141840', null)).be.eql('032141840');
+		should(BrM.ie('18100100000059', 'XX')).be.eql('18100100000059');
+		done();
+	});
+
+	describe('I.E.: Group01', function() {
 		describe('- PE', function() {
 			var uf = 'PE';
 			it('Shoud mask 0321418-40', function(done) {
