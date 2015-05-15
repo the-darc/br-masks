@@ -96,11 +96,15 @@ gulp.task('runtestdot', ['jshint', 'build'], function() {
 	.on('error', console.warn.bind(console));
 });
 
+function mochaRunnerFactory(reporter) {
+	return plugins.mocha({
+		reporter: reporter || 'spec'
+	});
+}
+
 gulp.task('runtest', ['jshint', 'build'], function() {
 	gulp.src(path.test.files, {read: false})
-	.pipe(plugins.mocha({
-		reporter: 'spec'
-	}))
+	.pipe(mochaRunnerFactory())
 	.on('error', console.warn.bind(console));
 });
 
@@ -113,3 +117,45 @@ gulp.task('test', ['jshint', 'build', 'runtest']);
 gulp.task('test-watch', ['jshint', 'build', 'runtest'], function() {
 	gulp.watch(path.src.files, ['jshint', 'build', 'runtest']);
 });
+
+gulp.task('test-coverage', function(done) {
+	gulp.src(path.src.files)
+	.pipe(plugins.istanbul())
+	.pipe(plugins.istanbul.hookRequire())
+	.on('finish', function() {
+		gulp.src(path.test.files, {
+			cwd: process.env.PWD,
+			read: false
+		})
+		.pipe(mochaRunnerFactory('spec'))
+		.pipe(plugins.istanbul.writeReports())
+		.on('end', function() {
+			if (process.env.TRAVIS) {
+				gulp.src('./coverage/**/lcov.info')
+				.pipe(plugins.coveralls())
+				.on('end', done);
+			} else {
+				done();
+			}
+		});
+	});
+});
+
+gulp.task('changelog', function(done) {
+	var changelog = require('conventional-changelog');
+
+	var options = {
+		repository: pkg.homepage,
+		version: pkg.version,
+		file: path.join(__dirname, 'CHANGELOG.md')
+	};
+
+	changelog(options, function(err, log) {
+		if (err) {
+			throw err;
+		}
+
+		fs.writeFile(options.file, log, done);
+	});
+});
+
