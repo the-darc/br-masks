@@ -271,6 +271,10 @@ var FINANCE = function(value, precision, decimalSep, groupSep) {
 
 /*exported IE */
 var IE = function(value, uf) {
+	if (!value || typeof value !== 'string') {
+		return value;
+	}
+
 	var ieMasks = {
 		'AC': [{mask: new StringMask('00.000.000/000-00')}],
 		'AL': [{mask: new StringMask('000000000')}],
@@ -330,7 +334,7 @@ var IE = function(value, uf) {
 	}
 
 	var mask = getMask(uf, value);
-	if(!value || !mask) {
+	if(!mask) {
 		return value;
 	}
 	var processed = mask.process(clearValue(value));
@@ -362,6 +366,7 @@ var PHONE = function(value) {
 	}
 
 	var formatedValue;
+	value = value + '';
 	if(value.length < 11){
 		formatedValue = phoneMask8D.apply(value);
 	}else{
