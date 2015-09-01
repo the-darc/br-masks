@@ -1,3 +1,12 @@
+<a name"0.4.1"></a>
+### 0.4.1 (2015-09-01)
+
+
+#### Bug Fixes
+
+* **package.json:** remove postinstall script ([999b5d49](http://github.com/the-darc/br-masks/commit/999b5d49))
+
+
 <a name"0.4.0"></a>
 ## 0.4.0 (2015-05-15)
 
