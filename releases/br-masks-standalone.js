@@ -69,7 +69,9 @@
 	}
 
 	StringMask.prototype.process = function proccess(value) {
-		if (!value) return '';
+		if (!value) {
+			return {result: '', valid: false};
+		}
 		value = value + '';
 		var pattern2 = this.pattern;
 		var valid = true;
@@ -223,6 +225,16 @@ var CEP = function(value) {
 	}
 	var processed = cepMask.process(value);
 	return processed.result;
+};
+
+/*exported CNPJBASE */
+var CNPJBASE = function(value) {
+	if(!value) {
+		return value;
+	}
+	var cnpjBasePattern = new StringMask('00.000.000');
+	var formatedValue = cnpjBasePattern.apply(value);
+	return formatedValue;
 };
 
 /*exported CNPJ */
@@ -388,6 +400,7 @@ var PHONE = function(value) {
 		ie: IE,
 		cpf: CPF,
 		cnpj: CNPJ,
+       cnpjBase: CNPJBASE,
 		phone: PHONE,
 		cep: CEP,
 		finance: FINANCE,
