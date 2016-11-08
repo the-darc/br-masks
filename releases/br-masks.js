@@ -32,6 +32,16 @@ var CEP = function(value) {
 	return processed.result;
 };
 
+/*exported CNPJBASE */
+var CNPJBASE = function(value) {
+	if(!value) {
+		return value;
+	}
+	var cnpjBasePattern = new StringMask('00.000.000');
+	var formatedValue = cnpjBasePattern.apply(value);
+	return formatedValue;
+};
+
 /*exported CNPJ */
 var CNPJ = function(value) {
 	if(!value) {
@@ -198,6 +208,7 @@ var PHONE = function(value) {
 		ie: IE,
 		cpf: CPF,
 		cnpj: CNPJ,
+       cnpjBase: CNPJBASE,
 		phone: PHONE,
 		cep: CEP,
 		finance: FINANCE,
