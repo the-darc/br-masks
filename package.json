@@ -30,7 +30,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "string-mask": "^0.2.1"
+    "string-mask": "^0.3.0"
   },
   "devDependencies": {
     "conventional-changelog": "0.0.17",
