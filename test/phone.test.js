@@ -18,4 +18,8 @@ describe('PHONE', function(){
 		should(BrM.phone('38212201255')).be.eql('(38) 21220-1255');
 		done();
 	});
+	it('should maks 08001234567 to 0800-123-4567', function(done) {
+		should(BrM.phone('08001234567')).be.eql('0800-123-4567');
+		done();
+	});
 });
