@@ -87,6 +87,10 @@ See: [Conferência de Inscrições Estaduais](http://www.sintegra.gov.br/insc_es
 	var phone9 = '38212201255';
 	var masked9 = BrM.phone(phone9);
 	// masked9 should be '(38) 21220-1255'
+
+	var phone0800 = '08001234567';
+	var masked0800 = BrM.phone(phone0800);
+	// masked0800 should be '0800-123-4567'
 ```
 
 ### FINANCE ###

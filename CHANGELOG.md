@@ -1,3 +1,13 @@
+<a name="0.5.0"></a>
+# [0.5.0](https://github.com/the-darc/br-masks/compare/0.4.1...0.5.0) (2016-11-09)
+
+
+### Features
+
+* **phone:** added support for 0800 phone numbers ([8fb2f46](https://github.com/the-darc/br-masks/commit/8fb2f46)), closes [#8](https://github.com/the-darc/br-masks/pull/8)
+* **cnpj-base:** added support for cnpj-base.js ([5cc07ff](https://github.com/the-darc/br-masks/commit/5cc07ff)), closes [#7](https://github.com/the-darc/br-masks/pull/7)
+
+
 <a name"0.4.1"></a>
 ### 0.4.1 (2015-09-01)
 

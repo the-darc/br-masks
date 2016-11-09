@@ -1,11 +1,12 @@
 /**
  * br-masks
  * A library of masks applicable to several Brazilian data like I.E., CNPJ, CPF and others
- * @version v0.4.1
+ * @version v0.5.0
  * @link http://github.com/the-darc/br-masks
  * @license MIT
  */
 (function (root, factory) {
+   /* istanbul ignore next */
 	if (typeof define === 'function' && define.amd) {
 		// AMD. Register as an anonymous module.
 		define(['string-mask'], factory);
@@ -19,6 +20,7 @@
 		root.BrM = factory(root.StringMask);
 	}
 }(this, function (StringMask) {
+   /* istanbul ignore if */
 	if (!StringMask) {
 		throw new Error('StringMask not found');
 	}
@@ -30,6 +32,16 @@ var CEP = function(value) {
 	}
 	var processed = cepMask.process(value);
 	return processed.result;
+};
+
+/*exported CNPJBASE */
+var CNPJBASE = function(value) {
+	if(!value) {
+		return value;
+	}
+	var cnpjBasePattern = new StringMask('00.000.000');
+	var formatedValue = cnpjBasePattern.apply(value);
+	return formatedValue;
 };
 
 /*exported CNPJ */
@@ -174,7 +186,8 @@ var NFEACCESSKEY = function(value) {
 /*exported PHONE */
 var PHONE = function(value) {
 	var phoneMask8D = new StringMask('(00) 0000-0000'),
-		phoneMask9D = new StringMask('(00) 00000-0000');
+		phoneMask9D = new StringMask('(00) 00000-0000'),
+		phoneMask0800 = new StringMask('0000-000-0000');
 
 	if(!value) {
 		return value;
@@ -182,7 +195,9 @@ var PHONE = function(value) {
 
 	var formatedValue;
 	value = value + '';
-	if(value.length < 11){
+	if (value.indexOf('0800') === 0) {
+			formatedValue = phoneMask0800.apply(value);
+	}else if(value.length < 11){
 		formatedValue = phoneMask8D.apply(value);
 	}else{
 		formatedValue = phoneMask9D.apply(value);
@@ -195,6 +210,7 @@ var PHONE = function(value) {
 		ie: IE,
 		cpf: CPF,
 		cnpj: CNPJ,
+       cnpjBase: CNPJBASE,
 		phone: PHONE,
 		cep: CEP,
 		finance: FINANCE,

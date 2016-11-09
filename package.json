@@ -1,6 +1,6 @@
 {
   "name": "br-masks",
-  "version": "0.4.1",
+  "version": "0.5.0",
   "description": "A library of masks applicable to several Brazilian data like I.E., CNPJ, CPF and others",
   "id": "/br-masks",
   "main": "releases/br-masks.js",
@@ -14,13 +14,14 @@
   },
   "scripts": {
     "test": "gulp test-coverage",
-    "postupdate": "bower update"
+    "release": "conventional-changelog -p angular -i CHANGELOG.md -s"
   },
   "keywords": [
     "masks",
     "mascara",
     "cpf",
     "cnpj",
+    "cnpj base",
     "inscrição estadual",
     "cep"
   ],
@@ -30,21 +31,22 @@
   },
   "license": "MIT",
   "dependencies": {
-    "string-mask": "^0.2.1"
+    "string-mask": "^0.3.0"
   },
   "devDependencies": {
-    "conventional-changelog": "0.0.17",
-    "gulp": "^3.7.0",
-    "gulp-concat": "^2.3.4",
+    "conventional-changelog": "^1.1.0",
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.0",
     "gulp-coveralls": "^0.1.4",
     "gulp-footer": "^1.0.5",
     "gulp-header": "^1.0.5",
-    "gulp-istanbul": "^0.9.0",
-    "gulp-jshint": "^1.6.1",
-    "gulp-load-plugins": "^0.5.3",
-    "gulp-mocha": "^1.0.0",
-    "gulp-uglify": "^0.3.2",
-    "jshint-stylish": "^0.2.0",
-    "should": "^4.0.1"
+    "gulp-istanbul": "^1.1.1",
+    "gulp-jshint": "^2.0.2",
+    "gulp-load-plugins": "^1.4.0",
+    "gulp-mocha": "^3.0.1",
+    "gulp-uglify": "^2.0.0",
+    "jshint": "^2.9.4",
+    "jshint-stylish": "^2.2.1",
+    "should": "^11.1.1"
   }
 }
