@@ -1,11 +1,12 @@
 /**
  * br-masks
  * A library of masks applicable to several Brazilian data like I.E., CNPJ, CPF and others
- * @version v0.4.1
+ * @version v0.5.0
  * @link http://github.com/the-darc/br-masks
  * @license MIT
  */
 (function (root, factory) {
+   /* istanbul ignore next */
 	if (typeof define === 'function' && define.amd) {
 		// AMD. Register as an anonymous module.
 		define(['string-mask'], factory);
@@ -19,6 +20,7 @@
 		root.BrM = factory(root.StringMask);
 	}
 }(this, function (StringMask) {
+   /* istanbul ignore if */
 	if (!StringMask) {
 		throw new Error('StringMask not found');
 	}
