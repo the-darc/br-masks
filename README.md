@@ -1,8 +1,8 @@
 # br-masks #
-[![npm version](https://badge.fury.io/js/br-masks.svg)](http://badge.fury.io/js/br-masks)
-[![Bower version](https://badge.fury.io/bo/br-masks.svg)](http://badge.fury.io/bo/br-masks)
+[![npm version](https://img.shields.io/npm/v/br-masks.svg)](https://www.npmjs.com/package/br-masks) 
+[![Bower version](https://img.shields.io/bower/v/br-masks.svg)](https://bower.io/search/?q=br-masks) 
 [![Build Status](https://travis-ci.org/the-darc/br-masks.svg?branch=master)](https://travis-ci.org/the-darc/br-masks)
-[![Coverage Status](https://coveralls.io/repos/the-darc/br-masks/badge.svg?branch=master)](https://coveralls.io/r/the-darc/br-masks?branch=master)
+[![Coverage Status](https://coveralls.io/repos/the-darc/br-masks/badge.svg?branch=master)](https://coveralls.io/r/the-darc/br-masks?branch=master) 
 
 A library of masks applicable to several Brazilian data like I.E., CNPJ, CPF and others
 
