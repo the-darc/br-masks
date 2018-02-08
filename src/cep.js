@@ -4,6 +4,6 @@ var CEP = function(value) {
 	if(!value) {
 		return value;
 	}
-	var processed = cepMask.process(value);
+	var processed = cepMask.process(value.replace(/\D/g, ''));
 	return processed.result;
 };

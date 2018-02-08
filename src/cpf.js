@@ -4,6 +4,6 @@ var CPF = function(value) {
 	if(!value) {
 		return value;
 	}
-	var formatedValue = cpfPattern.apply(value);
+	var formatedValue = cpfPattern.apply(value.replace(/\D/g, ''));
 	return formatedValue;
 };

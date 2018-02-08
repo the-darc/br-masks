@@ -4,6 +4,6 @@ var CNPJBASE = function(value) {
 		return value;
 	}
 	var cnpjBasePattern = new StringMask('00.000.000');
-	var formatedValue = cnpjBasePattern.apply(value);
+	var formatedValue = cnpjBasePattern.apply(value.replace(/\D/g, ''));
 	return formatedValue;
 };

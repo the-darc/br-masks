@@ -30,7 +30,7 @@ var CEP = function(value) {
 	if(!value) {
 		return value;
 	}
-	var processed = cepMask.process(value);
+	var processed = cepMask.process(value.replace(/\D/g, ''));
 	return processed.result;
 };
 
@@ -40,7 +40,7 @@ var CNPJBASE = function(value) {
 		return value;
 	}
 	var cnpjBasePattern = new StringMask('00.000.000');
-	var formatedValue = cnpjBasePattern.apply(value);
+	var formatedValue = cnpjBasePattern.apply(value.replace(/\D/g, ''));
 	return formatedValue;
 };
 
@@ -50,7 +50,7 @@ var CNPJ = function(value) {
 		return value;
 	}
 	var cnpjPattern = new StringMask('00.000.000\/0000-00');
-	var formatedValue = cnpjPattern.apply(value);
+	var formatedValue = cnpjPattern.apply(value.replace(/\D/g, ''));
 	return formatedValue;
 };
 
@@ -72,7 +72,7 @@ var CPF = function(value) {
 	if(!value) {
 		return value;
 	}
-	var formatedValue = cpfPattern.apply(value);
+	var formatedValue = cpfPattern.apply(value.replace(/\D/g, ''));
 	return formatedValue;
 };
 
@@ -194,7 +194,7 @@ var PHONE = function(value) {
 	}
 
 	var formatedValue;
-	value = value + '';
+	value = value.replace(/\D/g, '') + '';
 	if (value.indexOf('0800') === 0) {
 			formatedValue = phoneMask0800.apply(value);
 	}else if(value.length < 11){
