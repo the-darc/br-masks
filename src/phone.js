@@ -9,7 +9,7 @@ var PHONE = function(value) {
 	}
 
 	var formatedValue;
-	value = value + '';
+	value = value.replace(/\D/g, '') + '';
 	if (value.indexOf('0800') === 0) {
 			formatedValue = phoneMask0800.apply(value);
 	}else if(value.length < 11){
